@@ -1,0 +1,18 @@
+<launch>
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="true" />
+    <arg name="enable_sync" value="true" />
+    <arg name="depth_fps" value="30" />
+    <arg name="color_fps" value="30" />
+
+    <!-- Reduce resolution for optimization (change values as needed) -->
+    <arg name="depth_width" value="640"/>
+    <arg name="depth_height" value="480"/>
+    <arg name="color_width" value="640"/>
+    <arg name="color_height" value="480"/>
+
+  </include>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_broadcaster" args="0 0 0 0 0 0 base_link_frd camera_link 100" />
+
+</launch>
